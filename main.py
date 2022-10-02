@@ -334,7 +334,15 @@ if __name__ == '__main__':
             choice = input('The operation was successfully completed!\nType 1 to add a new roster icon, type 2 to modify an existing icon, or type 3 to modify the dimensions of the dds files.')
         if choice == '1':
             while True:
-                name = input("Input the Icon Name:\n")
+                name = ''
+                while True:
+                    name = input("Input the name.\n")
+                    if newval in [x.name for x in namelist]:
+                        print("Cannot have duplicate icon names. Please choose another name.\n")
+                    elif len(newval) > 10 or len(newval) < 4:
+                        print("Length of name too big or too small. Choose a name with length in range of 4-10.\n")
+                    else:
+                        break
                 x1 = int(input("Input the X1 Coordinate:\n"))
                 y1 = int(input("Input the Y1 Coordinate:\n"))
                 x2 = int(input("Input the X2 Coordinate:\n"))
@@ -354,7 +362,10 @@ if __name__ == '__main__':
                         break
                     else:
                         print('dds file not found.\n')
-                add_icon(gamelist, name, ddsnum, x1, y1, x2, y2, offset2, offset3)
+                        
+                noffset2 = get_offset(gamelist, arrmid, file_size)
+                noffset3 = get_offset(gamelist, arrbot, file_size)
+                add_icon(gamelist, name, ddsnum, x1, y1, x2, y2, noffset2, noffset3)
                 choice = input("Would you like to add another icon? Type Y for yes and anything else for no.\n")
                 if choice != 'Y':
                     break
@@ -383,6 +394,8 @@ if __name__ == '__main__':
                     newval = input("Enter in the new value.\n")
                     if newval in [x.name for x in namelist]:
                         print("Cannot have duplicate icon names. Please choose another name.\n")
+                    elif len(newval) > 10 or len(newval) < 4:
+                        print("Length of name too big or too small. Choose a name with length in range of 4-10.\n")
                     else:
                         break
             iconlist[nameindex].__dict__[attribute] = newval
