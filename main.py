@@ -318,6 +318,7 @@ def modicon(gamelist: list[int], sicon: icon, endoffset: int, endoffset2: int=0)
 
 if __name__ == '__main__':
     filename = sys.argv[1]
+    #filename = os.path.dirname(os.path.realpath(__file__)) + "\\charicon_s.gfx"
     choice = ''
     while True:
         file = open(filename, "rb")
@@ -327,7 +328,6 @@ if __name__ == '__main__':
         offset3 = get_offset(gamelist, arrbot, file_size)
         iconlist = [geticoninfo(gamelist, x, offset2) for x in getnamelist(gamelist, offset3, offset2)]
         namelist = [x for x in getnamelist(gamelist, offset3, offset2)]
-        file.close()
         if choice == '':
             choice = input('Welcome to the Naruto Storm 4 Charicon GFX tool!\nType 1 to add a new roster icon, type 2 to modify an existing icon, or type 3 to modify the dimensions of the dds files.')
         else:
@@ -343,7 +343,7 @@ if __name__ == '__main__':
                 while True:
                     ddslist = getddslist(gamelist)
                     for x in range(0, len(ddslist)):
-                        print(ddslist[x].name)
+                        print(ddslist[x])
                     dds = input("Input the DDS file that you'd like to use:\n")
                     val = False
                     for x in ddslist:
