@@ -317,8 +317,8 @@ def modicon(gamelist: list[int], sicon: icon, endoffset: int, endoffset2: int=0)
     return
 
 if __name__ == '__main__':
-    filename = sys.argv[1]
-    #filename = os.path.dirname(os.path.realpath(__file__)) + "\\charicon_s.gfx"
+    #filename = sys.argv[1]
+    filename = os.path.dirname(os.path.realpath(__file__)) + "\\charicon_s.gfx"
     choice = ''
     while True:
         file = open(filename, "rb")
@@ -337,9 +337,9 @@ if __name__ == '__main__':
                 name = ''
                 while True:
                     name = input("Input the name.\n")
-                    if newval in [x.name for x in namelist]:
+                    if name in [x.name for x in namelist]:
                         print("Cannot have duplicate icon names. Please choose another name.\n")
-                    elif len(newval) > 10 or len(newval) < 4:
+                    elif len(name) > 10 or len(name) < 4:
                         print("Length of name too big or too small. Choose a name with length in range of 4-10.\n")
                     else:
                         break
@@ -371,7 +371,7 @@ if __name__ == '__main__':
                     break
         if choice == '2':
             while True:
-                for x in namelist:
+                for x in iconlist:
                     print(x)
                 nname = input("Input the icon that you'd like to modify:\n")
                 nameindex = 0
