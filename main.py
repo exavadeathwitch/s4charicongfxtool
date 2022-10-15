@@ -317,8 +317,8 @@ def modicon(gamelist: list[int], sicon: icon, endoffset: int, endoffset2: int=0)
     return
 
 if __name__ == '__main__':
-    #filename = sys.argv[1]
-    filename = os.path.dirname(os.path.realpath(__file__)) + "\\charicon_s.gfx"
+    filename = sys.argv[1]
+    #filename = os.path.dirname(os.path.realpath(__file__)) + "\\charicon_s.gfx"
     choice = ''
     while True:
         file = open(filename, "rb")
